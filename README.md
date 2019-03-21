@@ -1,3 +1,2 @@
 # Golf Application   :
-Help golf player
-jeelssaa11
+Help golf player in tornament 
