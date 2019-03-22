@@ -6,7 +6,7 @@ Help golf player in tournament
 sudo pip3 install virtualenv
 
 On Windows, run:
-GolfApp\src\venv\Scripts\activate.bat
+"GolfApp\src\venv\Scripts\activate.bat"
 
 On Unix or MacOS, run:
 source GolfApp/src/venv/bin/activate
