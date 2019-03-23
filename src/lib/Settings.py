@@ -15,15 +15,13 @@ class Settings(object):
             currentLangue = currentLangue[0:lenC]
         return currentLangue
 
-    def saveLangue(langue):
+    def saveLangue(currentLangue,langue):
         # Function for refactoring
         # if the other options will have the same values ​, replace all
         # is responsible for saving the new CurrentLangue value
         with open(Settings.path,'r+') as f :
             file = f.read()
-            new_text = file.replace("Eng", langue)
+            new_text = file.replace(currentLangue, langue)
             f.seek(0)
             f.write(new_text)
             f.truncate()
-print("hhye")
-print(f"{Settings.CurrentLangue()}")
