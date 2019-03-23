@@ -9,7 +9,7 @@ class MainGui():
         self.master = master
         master.title("Golf Time Pro")
         variable = StringVar(master)
-        variable.set('Eng')
+        # variable.set('Eng')
 
         self.popupMenu = OptionMenu(master, variable,'Eng','Pl' )
         self.popupMenu.pack()
@@ -20,7 +20,8 @@ class MainGui():
 
         self.greet_button = Button(master, text=Translation.translator("Greet",self.CurrentLangue), command=self.greet)
         self.greet_button.pack()
-        self.reset_button = Button(master, text=Translation.translator("reset",self.CurrentLangue), command=lambda:MainGui.reset(variable.get(),master))
+        
+        self.reset_button = Button(master, text=Translation.translator("reset",self.CurrentLangue), command=lambda:MainGui.reset(variable.get(),master).quit)
         self.reset_button.pack()
 
         self.close_button = Button(master, text=Translation.translator("Close",self.CurrentLangue), command=master.quit)
@@ -30,5 +31,6 @@ class MainGui():
         if variable != MainGui.CurrentLangue :
             MainGui.CurrentLangue = variable
             print(MainGui.CurrentLangue)
+            return master
     def greet(self):
         print(Translation.translator("Welcome on our application",self.CurrentLangue))
