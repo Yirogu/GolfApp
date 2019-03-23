@@ -11,8 +11,9 @@ class MainGui():
         master.title("Golf Time Pro")
         variable = StringVar(master)
         variable.set(Settings.CurrentLangue())
+        leng = ["Eng","Pl"]
 
-        self.popupMenu = OptionMenu(master, variable,'Eng','Pl' )
+        self.popupMenu = OptionMenu(master, variable,*leng,command= self.greet) 
         self.popupMenu.pack()
 
 
