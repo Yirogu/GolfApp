@@ -1,38 +1,96 @@
-from tkinter import *
+import tkinter as tk
+from tkinter import ttk
 from tkinter import messagebox
 from .Translation import Translation
 from .Settings import Settings
 # how i can do 1 import for 2 files ?
-class MainGui():
+LARGE_FONT = ("Verdana", 12)
+class MainGui(tk.Tk):
     CurrentLangue = Settings.CurrentLangue()
-    def __init__(self, master):
+    def __init__ (self,*args,**kwargs) :
 
-        self.master = master
-        master.title("Golf Time Pro")
-        variable = StringVar(master)
-        variable.set(Settings.CurrentLangue())
-        leng = ["Eng","Pl"]
+        tk.Tk.__init__(self,*args,**kwargs)
 
-        self.popupMenu = OptionMenu(master, variable,*leng,command= self.greet) 
-        self.popupMenu.pack()
+        tk.Tk.title(self,"Golf Time Pro")
+        img = tk.PhotoImage(file='/home/stach/Desktop/Python3/GolfApp/src/lib/logo.gif')
+        self.tk.call('wm','iconphoto',self._w,img)
+
+        container = tk.Frame(self)
+        container.pack(side='top',fill='both', expand = True )
+        container.grid_rowconfigure(0,weight =1)
+        container.grid_columnconfigure(0,weight = 1)
+
+        self.frames = {}
+
+        for F in (StartPage,About_Page,Settings_Page) :
+
+            frame  = F(container,self)
+
+            self.frames[F] = frame
+
+            frame.grid(row = 0 ,column = 0, sticky = "nsew")
+        self.show_frame(StartPage)
+
+    def show_frame(self,cont):
+
+        frame =self.frames[cont]
+        frame.tkraise()
+
+def qf (param):
+    print(param)
 
 
-        self.label = Label(master, text=Translation.translator("Welcome on our application",self.CurrentLangue))
-        self.label.pack()
 
-        self.greet_button = Button(master, text=Translation.translator("Greet",self.CurrentLangue), command=self.greet)
-        self.greet_button.pack()
+class StartPage (tk.Frame):
+    def __init__(self,parent,controller):
+        tk.Frame.__init__(self,parent)
 
-        self.reset_button = Button(master, text=Translation.translator("reset",self.CurrentLangue), command=lambda:MainGui.reset(variable.get()))
-        self.reset_button.pack()
+        button1 = ttk.Button(self,text = "About",
+        command = lambda :controller.show_frame(About_Page))
+        button1.pack()
 
-        self.close_button = Button(master, text=Translation.translator("Close",self.CurrentLangue), command=master.quit)
+        button2 = ttk.Button(self,text = "Settings",
+        command = lambda :controller.show_frame(Settings_Page))
+        button2.pack()
+
+        self.close_button = ttk.Button(self, text=Translation.translator("Close",MainGui.CurrentLangue), command=self.quit)
         self.close_button.pack()
 
+
+
+    def greet(self):
+        print(Translation.translator("Welcome on our application",MainGui.CurrentLangue))
+class About_Page(tk.Frame) :
+    def __init__(self,parent,controller):
+        tk.Frame.__init__(self,parent)
+        label = tk.Label(self,text="About us",font =LARGE_FONT)
+        label.pack(pady=10,padx=10)
+
+        button1 = ttk.Button(self,text = "Back to Home",
+        command = lambda :controller.show_frame(StartPage))
+        button1.pack()
+
+class Settings_Page(tk.Frame) :
+    def __init__(self,parent,controller):
+        tk.Frame.__init__(self,parent)
+        label = tk.Label(self,text="Settings",font =LARGE_FONT)
+        label.pack(pady=10,padx=10)
+        variable = tk.StringVar(parent)
+        variable.set(Settings.CurrentLangue())
+        leng = ["Eng","Pl"]
+        label = tk.Label(self,text="Langue",font =LARGE_FONT)
+        label.pack(pady=10,padx=10)
+        self.popupMenu = tk.OptionMenu(self, variable,*leng)
+        self.popupMenu.pack()
+
+        button1 = ttk.Button(self,text = "Save",
+        command = lambda :Settings_Page.reset(variable.get()))
+        button1.pack()
+
+        button2 = ttk.Button(self,text = "Back to Home",
+        command = lambda :controller.show_frame(StartPage))
+        button2.pack()
     def reset(variable):
         if variable != MainGui.CurrentLangue :
             Settings.saveLangue(MainGui.CurrentLangue,variable)
             print(MainGui.CurrentLangue)
-
-    def greet(self):
-        print(Translation.translator("Welcome on our application",self.CurrentLangue))
