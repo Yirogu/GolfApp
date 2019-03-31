@@ -16,7 +16,7 @@ class MainGui(tk.Tk):
         tk.Tk.title(self,"Golf Time Pro")
         img = tk.PhotoImage(file='/home/stach/Desktop/Python3/GolfApp/src/lib/logo.gif')
         self.tk.call('wm','iconphoto',self._w,img)
-
+        self.geometry("1280x720")
         container = tk.Frame(self)
         container.pack(side='top',fill='both', expand = True )
         container.grid_rowconfigure(0,weight =1)
