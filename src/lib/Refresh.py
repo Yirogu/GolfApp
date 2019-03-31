@@ -1,6 +1,5 @@
 from .Settings import Settings
 from .Translation import Translation
-from .MainGui import MainGui
 class Refresh :
     def refresh(variable,element):
         # Check current langue if is diffrent, expect change after reset
