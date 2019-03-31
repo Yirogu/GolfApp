@@ -3,6 +3,8 @@ from tkinter import ttk
 from tkinter import messagebox
 from .Translation import Translation
 from .Settings import Settings
+from .Refresh import Refresh
+
 # how i can do 1 import for 2 files ?
 LARGE_FONT = ("Verdana", 12)
 class MainGui(tk.Tk):
@@ -69,6 +71,7 @@ class About_Page(tk.Frame) :
         command = lambda :controller.show_frame(StartPage))
         button1.pack()
 
+
 class Settings_Page(tk.Frame) :
     def __init__(self,parent,controller):
         tk.Frame.__init__(self,parent)
@@ -82,15 +85,12 @@ class Settings_Page(tk.Frame) :
         self.popupMenu = tk.OptionMenu(self, variable,*leng)
         self.popupMenu.pack()
 
+
         button1 = ttk.Button(self,text = Translation.translator("Save",MainGui.CurrentLangue),
-        command = lambda :Settings_Page.reset(variable.get()))
+        command = lambda : Refresh.refresh(variable.get(),label))
         button1.pack()
+
 
         button2 = ttk.Button(self,text = Translation.translator("Back to Home",MainGui.CurrentLangue),
         command = lambda :controller.show_frame(StartPage))
         button2.pack()
-    def reset(variable):
-        # Check current langue if is diffrent, expect change after reset
-        if variable != MainGui.CurrentLangue :
-            Settings.saveLangue(MainGui.CurrentLangue,variable)
-            print(MainGui.CurrentLangue)
