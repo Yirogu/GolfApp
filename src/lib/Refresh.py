@@ -3,7 +3,7 @@ from .Translation import Translation
 
 class Refresh :
     def refresh(variable,*elements):
-        # Check current langue if is diffrent, expect change after reset
+        # Check current langue if is diffrent, expect change in live application
         if variable != Settings.CurrentLangue() :
             Settings.saveLangue(Settings.CurrentLangue(),variable)
             CurrentLangue = variable
@@ -11,7 +11,7 @@ class Refresh :
                 element[0].config(text = Translation.translator(element[1],CurrentLangue)),CurrentLangue
 
     def refeshing(variable,StartPage,About_Page,Settings_Page) :
-
+        # values ​​for refresh()
         Refresh.refresh(variable.get(),
                     # StartPage
         [StartPage.button1,"About us"],
