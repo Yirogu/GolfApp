@@ -88,6 +88,10 @@ class Settings_Page(tk.Frame) :
 
         def refeshing() :
             Refresh.refresh(variable.get(),
+            # About_Page
+            [About_Page.label,"About us"],
+            [About_Page.button1,"Back to Home"],
+            # Settings_Page
             [label,"Settings"],
             [label1,"Langue"],
             [button1,"Save"],
