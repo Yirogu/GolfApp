@@ -81,14 +81,20 @@ class Settings_Page(tk.Frame) :
         variable = tk.StringVar(parent)
         variable.set(Settings.CurrentLangue())
         leng = ["Eng","Pl"]
-        label = tk.Label(self,text=Translation.translator("Langue",CurrentLangue),font =LARGE_FONT)
-        label.pack(pady=10,padx=10)
+        label1 = tk.Label(self,text=Translation.translator("Langue",CurrentLangue),font =LARGE_FONT)
+        label1.pack(pady=10,padx=10)
         self.popupMenu = tk.OptionMenu(self, variable,*leng)
         self.popupMenu.pack()
 
+        def refeshing() :
+            Refresh.refresh(variable.get(),
+            [label,"Settings"],
+            [label1,"Langue"],
+            [button1,"Save"],
+            [button2,"Back to Home"])
 
         button1 = ttk.Button(self,text = Translation.translator("Save",CurrentLangue),
-        command = lambda : Refresh.refresh(variable.get(),label))
+        command = refeshing)
         button1.pack()
 
 
