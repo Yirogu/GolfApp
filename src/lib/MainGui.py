@@ -38,8 +38,6 @@ class MainGui(tk.Tk):
         frame =self.frames[cont]
         frame.tkraise()
 
-def qf (param):
-    print(param)
 
 
 
@@ -59,49 +57,51 @@ class StartPage (tk.Frame):
         self.close_button.pack()
 
 
-
-    def greet(self):
-        print(Translation.translator("Welcome on our application",CurrentLangue))
 class About_Page(tk.Frame) :
     def __init__(self,parent,controller):
         tk.Frame.__init__(self,parent)
-        label = tk.Label(self,text=Translation.translator("About us",CurrentLangue),font =LARGE_FONT)
-        label.pack(pady=10,padx=10)
+        About_Page.label = tk.Label(self,text=Translation.translator("About us",CurrentLangue),font =LARGE_FONT)
+        About_Page.label.pack(pady=10,padx=10)
 
-        button1 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
+        About_Page.button1 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
         command = lambda :controller.show_frame(StartPage))
-        button1.pack()
+        About_Page.button1.pack()
 
 
 class Settings_Page(tk.Frame) :
     def __init__(self,parent,controller):
         tk.Frame.__init__(self,parent)
-        label = tk.Label(self,text=Translation.translator("Settings",CurrentLangue),font =LARGE_FONT)
-        label.pack(pady=10,padx=10)
+        Settings_Page.label = tk.Label(self,text=Translation.translator("Settings",CurrentLangue),font =LARGE_FONT)
+        Settings_Page.label.pack(pady=10,padx=10)
         variable = tk.StringVar(parent)
         variable.set(Settings.CurrentLangue())
         leng = ["Eng","Pl"]
-        label1 = tk.Label(self,text=Translation.translator("Langue",CurrentLangue),font =LARGE_FONT)
-        label1.pack(pady=10,padx=10)
-        self.popupMenu = tk.OptionMenu(self, variable,*leng)
-        self.popupMenu.pack()
-
-        def refeshing() :
-            Refresh.refresh(variable.get(),
-            # About_Page
-            [About_Page.label,"About us"],
-            [About_Page.button1,"Back to Home"],
-            # Settings_Page
-            [label,"Settings"],
-            [label1,"Langue"],
-            [button1,"Save"],
-            [button2,"Back to Home"])
-
-        button1 = ttk.Button(self,text = Translation.translator("Save",CurrentLangue),
-        command = refeshing)
-        button1.pack()
+        Settings_Page.label1 = tk.Label(self,text=Translation.translator("Langue",CurrentLangue),font =LARGE_FONT)
+        Settings_Page.label1.pack(pady=10,padx=10)
+        Settings_Page.popupMenu = tk.OptionMenu(self, variable,*leng)
+        Settings_Page.popupMenu.pack()
 
 
-        button2 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
+
+        Settings_Page.button1 = ttk.Button(self,text = Translation.translator("Save",CurrentLangue),
+#           Add all frames to Translation on live application
+        command =lambda:Refresh.refeshing(variable,StartPage,About_Page,Settings_Page))
+        Settings_Page.button1.pack()
+
+
+        Settings_Page.button2 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
         command = lambda :controller.show_frame(StartPage))
-        button2.pack()
+        Settings_Page.button2.pack()
+
+
+# def refeshing(variable,*args) :
+#
+#     Refresh.refresh(variable.get(),
+#                 # About_Page
+#     [About_Page.label,"About us"],
+#     [About_Page.button1,"Back to Home"],
+#                 # Settings_Page
+#     [Settings_Page.label,"Settings"],
+#     [Settings_Page.label1,"Langue"],
+#     [Settings_Page.button1,"Save"],
+#     [Settings_Page.button2,"Back to Home"])
