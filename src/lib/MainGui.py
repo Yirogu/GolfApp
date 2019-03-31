@@ -45,16 +45,16 @@ class StartPage (tk.Frame):
     def __init__(self,parent,controller):
         tk.Frame.__init__(self,parent)
 
-        self.button1 = ttk.Button(self,text = Translation.translator("About us",CurrentLangue),
+        StartPage.button1 = ttk.Button(self,text = Translation.translator("About us",CurrentLangue),
         command = lambda :controller.show_frame(About_Page))
-        self.button1.pack()
+        StartPage.button1.pack()
 
-        self.button2 = ttk.Button(self,text = Translation.translator("Settings",CurrentLangue),
+        StartPage.button2 = ttk.Button(self,text = Translation.translator("Settings",CurrentLangue),
         command = lambda :controller.show_frame(Settings_Page))
-        self.button2.pack()
+        StartPage.button2.pack()
 
-        self.close_button = ttk.Button(self, text=Translation.translator("Close",CurrentLangue), command=self.quit)
-        self.close_button.pack()
+        StartPage.close_button = ttk.Button(self, text=Translation.translator("Close",CurrentLangue), command=self.quit)
+        StartPage.close_button.pack()
 
 
 class About_Page(tk.Frame) :
