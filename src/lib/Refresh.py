@@ -13,6 +13,10 @@ class Refresh :
     def refeshing(variable,StartPage,About_Page,Settings_Page) :
 
         Refresh.refresh(variable.get(),
+                    # StartPage
+        [StartPage.button1,"About us"],
+        [StartPage.button2,"Settings"],
+        [StartPage.close_button,"Close"],
                     # About_Page
         [About_Page.label,"About us"],
         [About_Page.button1,"Back to Home"],
