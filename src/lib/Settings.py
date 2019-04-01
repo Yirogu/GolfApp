@@ -27,8 +27,10 @@ class Settings(object):
     def lines (argument):
         with open(Settings.path) as f:
             list = []
-            list.append(f.readline())
-            list.append(f.readline())
+            for  x in range(2)
+                x = f.readline().split(":")
+                list.append(x[1])
+
 
         return list[argument]
 
@@ -37,5 +39,3 @@ class Settings(object):
 
 
 res = Settings.lines(1)
-x = res.split(":")
-print(x[1])
