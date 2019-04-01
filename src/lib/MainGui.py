@@ -8,6 +8,7 @@ from .Refresh import Refresh
 # how i can do 1 import for 2 files ?
 LARGE_FONT = ("Verdana", 12)
 CurrentLangue = Settings.CurrentLangue()
+CurrentResolution = Settings.resolution()
 class MainGui(tk.Tk):
 
     def __init__ (self,*args,**kwargs) :
@@ -16,7 +17,7 @@ class MainGui(tk.Tk):
         tk.Tk.title(self,"Golf Time Pro")
         img = tk.PhotoImage(file='/home/stach/Desktop/Python3/GolfApp/src/lib/logo.gif')
         self.tk.call('wm','iconphoto',self._w,img)
-        self.geometry("1280x720")
+        self.geometry(CurrentResolution)
         container = tk.Frame(self)
         container.pack(side='top',fill='both', expand = True )
         container.grid_rowconfigure(0,weight =1)

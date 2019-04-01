@@ -25,3 +25,5 @@ class Settings(object):
             f.seek(0)
             f.write(new_text)
             f.truncate()
+    def resolution ():
+        return "1280x720"
