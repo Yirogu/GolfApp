@@ -8,12 +8,11 @@ from .Refresh import Refresh
 # how i can do 1 import for 2 files ?
 LARGE_FONT = ("Verdana", 12)
 CurrentLangue = Settings.CurrentLangue()
-CurrentResolution = Settings.resolution()
+CurrentResolution = Settings.CurrentResolution()
 
 class MainGui(tk.Tk):
 
     def __init__ (self,*args,**kwargs) :
-        print(CurrentResolution)
         tk.Tk.__init__(self,*args,**kwargs)
         tk.Tk.title(self,"Golf Time Pro")
         img = tk.PhotoImage(file='/home/stach/Desktop/Python3/GolfApp/src/lib/logo.gif')

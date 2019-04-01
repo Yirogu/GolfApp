@@ -5,14 +5,21 @@ class Settings(object):
 
     path = '/home/stach/Desktop/Python3/GolfApp/Settings.txt'
 
-    def CurrentLangue() :
+    def lines (argument):
+        # Function read  value of settings.txt file
         with open(Settings.path) as f:
-            file = f.readline()
-            file = file.split(":")
-            currentLangue  = file[1]
-            lenC = len(currentLangue) -1
-            currentLangue = currentLangue[0:lenC]
-        return currentLangue
+            list = []
+            #  change functions so that you do not have to change the range
+            for x in range(2) :
+                x = f.readline().split(":")
+                x =x[1]
+                lenC = len(x) -1
+                x = x[0:lenC]
+                list.append(x)
+        return list[argument]
+
+    def CurrentLangue() :
+        return Settings.lines(0)
 
     def saveLangue(currentLangue,langue):
         # Function for refactoring
@@ -24,18 +31,6 @@ class Settings(object):
             f.seek(0)
             f.write(new_text)
             f.truncate()
-    def lines (argument):
-        with open(Settings.path) as f:
-            list = []
-            for  x in range(2)
-                x = f.readline().split(":")
-                list.append(x[1])
 
-
-        return list[argument]
-
-
-
-
-
-res = Settings.lines(1)
+    def CurrentResolution() :
+        return Settings.lines(1)
