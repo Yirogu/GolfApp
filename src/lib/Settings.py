@@ -7,7 +7,6 @@ class Settings(object):
 
     def CurrentLangue() :
         with open(Settings.path) as f:
-            dict = {}
             file = f.readline()
             file = file.split(":")
             currentLangue  = file[1]
@@ -25,5 +24,18 @@ class Settings(object):
             f.seek(0)
             f.write(new_text)
             f.truncate()
-    def resolution ():
-        return "1280x720"
+    def lines (argument):
+        with open(Settings.path) as f:
+            list = []
+            list.append(f.readline())
+            list.append(f.readline())
+
+        return list[argument]
+
+
+
+
+
+res = Settings.lines(1)
+x = res.split(":")
+print(x[1])

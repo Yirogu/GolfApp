@@ -9,10 +9,11 @@ from .Refresh import Refresh
 LARGE_FONT = ("Verdana", 12)
 CurrentLangue = Settings.CurrentLangue()
 CurrentResolution = Settings.resolution()
+
 class MainGui(tk.Tk):
 
     def __init__ (self,*args,**kwargs) :
-
+        print(CurrentResolution)
         tk.Tk.__init__(self,*args,**kwargs)
         tk.Tk.title(self,"Golf Time Pro")
         img = tk.PhotoImage(file='/home/stach/Desktop/Python3/GolfApp/src/lib/logo.gif')
@@ -93,16 +94,3 @@ class Settings_Page(tk.Frame) :
         Settings_Page.button2 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
         command = lambda :controller.show_frame(StartPage))
         Settings_Page.button2.pack()
-
-
-# def refeshing(variable,*args) :
-#
-#     Refresh.refresh(variable.get(),
-#                 # About_Page
-#     [About_Page.label,"About us"],
-#     [About_Page.button1,"Back to Home"],
-#                 # Settings_Page
-#     [Settings_Page.label,"Settings"],
-#     [Settings_Page.label1,"Langue"],
-#     [Settings_Page.button1,"Save"],
-#     [Settings_Page.button2,"Back to Home"])
