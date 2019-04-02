@@ -14,15 +14,20 @@ class MainGui(tk.Tk):
 
     def __init__ (self,*args,**kwargs) :
         tk.Tk.__init__(self,*args,**kwargs)
+        MainGui.master = self
         tk.Tk.title(self,"Golf Time Pro")
         img = tk.PhotoImage(file='/home/stach/Desktop/Python3/GolfApp/src/lib/logo.gif')
         self.tk.call('wm','iconphoto',self._w,img)
-        self.geometry(CurrentResolution)
+        MainGui.master.geometry(CurrentResolution)
+
+
+
+
+
         container = tk.Frame(self)
         container.pack(side='top',fill='both', expand = True )
         container.grid_rowconfigure(0,weight =1)
         container.grid_columnconfigure(0,weight = 1)
-
         self.frames = {}
         # Place t o add next Frames
         for F in (StartPage,About_Page,Settings_Page) :
@@ -33,6 +38,7 @@ class MainGui(tk.Tk):
 
             frame.grid(row = 0 ,column = 0, sticky = "nsew")
         self.show_frame(StartPage)
+
 
     def show_frame(self,cont):
 
@@ -96,8 +102,11 @@ class Settings_Page(tk.Frame) :
 #           Add all frames to Translation on live application
 #           and save Resolution.
         def saveSettings ():
+
             Refresh.refeshing(variable,StartPage,About_Page,Settings_Page)
-            Settings.saveResolution(CurrentResolution,variable)
+            Settings.saveResolution(CurrentResolution,variable1,MainGui.master)
+
+
 
         Settings_Page.button1 = ttk.Button(self,text = Translation.translator("Save",CurrentLangue),
 
