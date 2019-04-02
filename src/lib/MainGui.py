@@ -74,14 +74,24 @@ class Settings_Page(tk.Frame) :
         tk.Frame.__init__(self,parent)
         Settings_Page.label = tk.Label(self,text=Translation.translator("Settings",CurrentLangue),font =LARGE_FONT)
         Settings_Page.label.pack(pady=10,padx=10)
+
         variable = tk.StringVar(parent)
-        variable.set(Settings.CurrentLangue())
+        variable.set(CurrentLangue)
         leng = ["Eng","Pl"]
+
+        variable1 = tk.StringVar(parent)
+        variable1.set(CurrentResolution)
+        resolution = ["1280x720","1366x768","1600x900","1920x1080"]
+
         Settings_Page.label1 = tk.Label(self,text=Translation.translator("Langue",CurrentLangue),font =LARGE_FONT)
         Settings_Page.label1.pack(pady=10,padx=10)
         Settings_Page.popupMenu = tk.OptionMenu(self, variable,*leng)
         Settings_Page.popupMenu.pack()
 
+        Settings_Page.label1 = tk.Label(self,text=Translation.translator("Resolution",CurrentLangue),font =LARGE_FONT)
+        Settings_Page.label1.pack(pady=10,padx=10)
+        Settings_Page.popupMenu1 = tk.OptionMenu(self, variable1,*resolution)
+        Settings_Page.popupMenu1.pack()
 
 
         Settings_Page.button1 = ttk.Button(self,text = Translation.translator("Save",CurrentLangue),

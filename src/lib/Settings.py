@@ -22,6 +22,7 @@ class Settings(object):
         return Settings.lines(0)
 
     def saveLangue(currentLangue,langue):
+
         # Function for refactoring
         # if the other options will have the same values ​, replace all
         # is responsible for saving the new CurrentLangue value
@@ -34,3 +35,6 @@ class Settings(object):
 
     def CurrentResolution() :
         return Settings.lines(1)
+
+        def saveResolution (currentResolution,resolution) :
+            pass
