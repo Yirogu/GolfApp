@@ -88,14 +88,20 @@ class Settings_Page(tk.Frame) :
         Settings_Page.popupMenu = tk.OptionMenu(self, variable,*leng)
         Settings_Page.popupMenu.pack()
 
-        Settings_Page.label1 = tk.Label(self,text=Translation.translator("Resolution",CurrentLangue),font =LARGE_FONT)
-        Settings_Page.label1.pack(pady=10,padx=10)
+        Settings_Page.label2 = tk.Label(self,text=Translation.translator("Resolution",CurrentLangue),font =LARGE_FONT)
+        Settings_Page.label2.pack(pady=10,padx=10)
         Settings_Page.popupMenu1 = tk.OptionMenu(self, variable1,*resolution)
         Settings_Page.popupMenu1.pack()
 
+#           Add all frames to Translation on live application
+#           and save Resolution.
+        def saveSeings ():
+            Refresh.refeshing(variable,StartPage,About_Page,Settings_Page)
+            saveResolution(CurrentResolution,resolution,variable)
 
         Settings_Page.button1 = ttk.Button(self,text = Translation.translator("Save",CurrentLangue),
-#           Add all frames to Translation on live application
+
+
         command =lambda:Refresh.refeshing(variable,StartPage,About_Page,Settings_Page))
         Settings_Page.button1.pack()
 

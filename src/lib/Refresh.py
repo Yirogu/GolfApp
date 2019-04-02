@@ -5,7 +5,7 @@ class Refresh :
     def refresh(variable,*elements):
         # Check current langue if is diffrent, expect change in live application
         if variable != Settings.CurrentLangue() :
-            Settings.saveLangue(Settings.CurrentLangue(),variable)
+            Settings.saveOption(Settings.CurrentLangue(),variable)
             CurrentLangue = variable
             for element in elements :
                 element[0].config(text = Translation.translator(element[1],CurrentLangue)),CurrentLangue
@@ -23,5 +23,6 @@ class Refresh :
                     # Settings_Page
         [Settings_Page.label,"Settings"],
         [Settings_Page.label1,"Langue"],
+        [Settings_Page.label2,"Resolution"],
         [Settings_Page.button1,"Save"],
         [Settings_Page.button2,"Back to Home"])

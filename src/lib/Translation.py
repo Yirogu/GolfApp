@@ -8,7 +8,9 @@ class Translation():
             'Langue' : {'Eng' : 'Langue','Pl' : 'Jezyk'},
             'Save' : {'Eng':'Save','Pl' : 'Zapisz'},
             'Settings' : {'Eng' : 'Settings','Pl' : 'Ustawienia'},
-            'Start' : {'Eng' : 'Start','Pl' : 'Rozpocznij'}}
+            'Start' : {'Eng' : 'Start','Pl' : 'Rozpocznij'},
+            'Resolution' :{'Eng':"Resolution","Pl":"Rozdzielczosc"}
+            }
 
     sentences = {
             'About us' :

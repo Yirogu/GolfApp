@@ -21,14 +21,14 @@ class Settings(object):
     def CurrentLangue() :
         return Settings.lines(0)
 
-    def saveLangue(currentLangue,langue):
+    def saveOption(currentOption,option):
 
         # Function for refactoring
         # if the other options will have the same values ​, replace all
         # is responsible for saving the new CurrentLangue value
         with open(Settings.path,'r+') as f :
             file = f.read()
-            new_text = file.replace(currentLangue, langue)
+            new_text = file.replace(currentOption, option)
             f.seek(0)
             f.write(new_text)
             f.truncate()
@@ -36,5 +36,7 @@ class Settings(object):
     def CurrentResolution() :
         return Settings.lines(1)
 
-        def saveResolution (currentResolution,resolution) :
-            pass
+    def saveResolution(CurrentResolution,resolution):
+        if variable != Settings.CurrentResolution() :
+            Settings.saveOption(Settings.CurrentResolution(),variable)
+            CurrentResolution = variable

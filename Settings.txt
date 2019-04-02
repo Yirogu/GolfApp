@@ -1,2 +1,2 @@
-CurrentLangue:Eng
+CurrentLangue:Pl
 Resolution:1280x720
