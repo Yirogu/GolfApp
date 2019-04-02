@@ -36,7 +36,7 @@ class Settings(object):
     def CurrentResolution() :
         return Settings.lines(1)
 
-    def saveResolution(CurrentResolution,resolution):
-        if variable != Settings.CurrentResolution() :
-            Settings.saveOption(Settings.CurrentResolution(),variable)
-            CurrentResolution = variable
+    def saveResolution(CurrentResolution,variable):
+        if variable.get() != Settings.CurrentResolution() :
+            Settings.saveOption(Settings.CurrentResolution(),variable.get())
+            CurrentResolution = variable.get()

@@ -95,14 +95,14 @@ class Settings_Page(tk.Frame) :
 
 #           Add all frames to Translation on live application
 #           and save Resolution.
-        def saveSeings ():
+        def saveSettings ():
             Refresh.refeshing(variable,StartPage,About_Page,Settings_Page)
-            saveResolution(CurrentResolution,resolution,variable)
+            Settings.saveResolution(CurrentResolution,variable)
 
         Settings_Page.button1 = ttk.Button(self,text = Translation.translator("Save",CurrentLangue),
 
 
-        command =lambda:Refresh.refeshing(variable,StartPage,About_Page,Settings_Page))
+        command =lambda:saveSettings())
         Settings_Page.button1.pack()
 
 
