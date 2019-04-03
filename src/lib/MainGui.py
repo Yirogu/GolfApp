@@ -20,18 +20,13 @@ class MainGui(tk.Tk):
         self.tk.call('wm','iconphoto',self._w,img)
         MainGui.master.geometry(CurrentResolution)
 
-
-
-
-
-
         container = tk.Frame(self)
         container.pack(side='top',fill='both', expand = True )
         container.grid_rowconfigure(0,weight =1)
         container.grid_columnconfigure(0,weight = 1)
         self.frames = {}
         # Place t o add next Frames
-        for F in (StartPage,About_Page,Settings_Page,Play_Page,Help_Page) :
+        for F in (StartPage,About_Page,Settings_Page,Play_Page,Help_Page,Tournament_Page) :
 
             frame  = F(container,self)
 
@@ -75,12 +70,33 @@ class Play_Page(tk.Frame) :
         tk.Frame.__init__(self,parent)
 
         Play_Page.button0 = ttk.Button(self,text = Translation.translator("Tournament",CurrentLangue),
-        command = lambda :controller.show_frame(Tournament))
+        command = lambda :controller.show_frame(Tournament_Page))
         Play_Page.button0.pack()
 
         Play_Page.button1 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
         command = lambda :controller.show_frame(StartPage))
         Play_Page.button1.pack()
+
+class Tournament_Page(tk.Frame) :
+    # To Do
+    def __init__(self,parent,controller):
+        tk.Frame.__init__(self,parent)
+
+        Tournament_Page.button0 = ttk.Button(self,text = Translation.translator("Start",CurrentLangue),
+        command = lambda :controller.show_frame(Tournament_Page))
+        Tournament_Page.button0.pack()
+
+        Tournament_Page.button1 = ttk.Button(self,text = Translation.translator("Add Players",CurrentLangue),
+        command = lambda :controller.show_frame(Tournament_Page))
+        Tournament_Page.button1.pack()
+
+        Tournament_Page.button1 = ttk.Button(self,text = Translation.translator("Format,Rules,itc",CurrentLangue),
+        command = lambda :controller.show_frame(StartPage))
+        Tournament_Page.button1.pack()
+
+        Tournament_Page.button1 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
+        command = lambda :controller.show_frame(StartPage))
+        Tournament_Page.button1.pack()
 
 class About_Page(tk.Frame) :
     def __init__(self,parent,controller):
