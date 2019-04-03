@@ -41,3 +41,5 @@ class Settings(object):
             Settings.saveOption(Settings.CurrentResolution(),variable.get())
             CurrentResolution = variable.get()
             master.geometry(CurrentResolution)
+    def fullscreen (var) :
+        var = True

@@ -24,6 +24,7 @@ class MainGui(tk.Tk):
 
 
 
+
         container = tk.Frame(self)
         container.pack(side='top',fill='both', expand = True )
         container.grid_rowconfigure(0,weight =1)
@@ -87,6 +88,10 @@ class Settings_Page(tk.Frame) :
 
         variable1 = tk.StringVar(parent)
         variable1.set(CurrentResolution)
+
+        #  If resolution is bigger than gui on ubuntu ,
+        # aplication can t change resolution to another.
+
         resolution = ["1280x720","1366x768","1600x900","1920x1080"]
 
         Settings_Page.label1 = tk.Label(self,text=Translation.translator("Langue",CurrentLangue),font =LARGE_FONT)
@@ -98,12 +103,18 @@ class Settings_Page(tk.Frame) :
         Settings_Page.label2.pack(pady=10,padx=10)
         Settings_Page.popupMenu1 = tk.OptionMenu(self, variable1,*resolution)
         Settings_Page.popupMenu1.pack()
+        var = tk.IntVar()
+        Settings_Page.check = tk.Checkbutton(
+            self, text="fullscreen",
+            variable=var)
+        Settings_Page.check.pack()
 
 #           Add all frames to Translation on live application
 #           and save Resolution.
-        def saveSettings ():
+        def saveSettings (fullscreen = var):
 
             Refresh.refeshing(variable,StartPage,About_Page,Settings_Page)
+            MainGui.master.attributes("-fullscreen", fullscreen.get())
             Settings.saveResolution(CurrentResolution,variable1,MainGui.master)
 
 
