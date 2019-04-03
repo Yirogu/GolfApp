@@ -31,7 +31,7 @@ class MainGui(tk.Tk):
         container.grid_columnconfigure(0,weight = 1)
         self.frames = {}
         # Place t o add next Frames
-        for F in (StartPage,About_Page,Settings_Page) :
+        for F in (StartPage,About_Page,Settings_Page,Play_Page,Help_Page) :
 
             frame  = F(container,self)
 
@@ -46,12 +46,13 @@ class MainGui(tk.Tk):
         frame =self.frames[cont]
         frame.tkraise()
 
-
-
-
 class StartPage (tk.Frame):
     def __init__(self,parent,controller):
         tk.Frame.__init__(self,parent)
+
+        StartPage.button0 = ttk.Button(self,text = Translation.translator("Play",CurrentLangue),
+        command = lambda :controller.show_frame(Play_Page))
+        StartPage.button0.pack()
 
         StartPage.button1 = ttk.Button(self,text = Translation.translator("About us",CurrentLangue),
         command = lambda :controller.show_frame(About_Page))
@@ -61,9 +62,25 @@ class StartPage (tk.Frame):
         command = lambda :controller.show_frame(Settings_Page))
         StartPage.button2.pack()
 
+        StartPage.button3 = ttk.Button(self,text = Translation.translator("Help",CurrentLangue),
+        command = lambda :controller.show_frame(Help_Page))
+        StartPage.button3.pack()
+
         StartPage.close_button = ttk.Button(self, text=Translation.translator("Close",CurrentLangue), command=self.quit)
         StartPage.close_button.pack()
 
+class Play_Page(tk.Frame) :
+    # To Do
+    def __init__(self,parent,controller):
+        tk.Frame.__init__(self,parent)
+
+        Play_Page.button0 = ttk.Button(self,text = Translation.translator("Tournament",CurrentLangue),
+        command = lambda :controller.show_frame(Tournament))
+        Play_Page.button0.pack()
+
+        Play_Page.button1 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
+        command = lambda :controller.show_frame(StartPage))
+        Play_Page.button1.pack()
 
 class About_Page(tk.Frame) :
     def __init__(self,parent,controller):
@@ -74,7 +91,6 @@ class About_Page(tk.Frame) :
         About_Page.button1 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
         command = lambda :controller.show_frame(StartPage))
         About_Page.button1.pack()
-
 
 class Settings_Page(tk.Frame) :
     def __init__(self,parent,controller):
@@ -129,3 +145,24 @@ class Settings_Page(tk.Frame) :
         Settings_Page.button2 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
         command = lambda :controller.show_frame(StartPage))
         Settings_Page.button2.pack()
+
+class Help_Page(tk.Frame) :
+    # To Do
+    def __init__(self,parent,controller):
+        tk.Frame.__init__(self,parent)
+
+        Help_Page.button0 = ttk.Button(self,text = Translation.translator("Wiki",CurrentLangue),
+        command = lambda :controller.show_frame(Tournament))
+        Help_Page.button0.pack()
+
+        Help_Page.button1 = ttk.Button(self,text = Translation.translator("Send Ticket/Error",CurrentLangue),
+        command = lambda :controller.show_frame(Tournament))
+        Help_Page.button1.pack()
+
+        Help_Page.button2 = ttk.Button(self,text = Translation.translator("Call to service",CurrentLangue),
+        command = lambda :controller.show_frame(Tournament))
+        Help_Page.button2.pack()
+
+        Help_Page.button3 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
+        command = lambda :controller.show_frame(StartPage))
+        Help_Page.button3.pack()
