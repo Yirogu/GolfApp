@@ -26,7 +26,7 @@ class MainGui(tk.Tk):
         container.grid_columnconfigure(0,weight = 1)
         self.frames = {}
         # Place t o add next Frames
-        for F in (StartPage,About_Page,Settings_Page,Play_Page,Help_Page,Tournament_Page) :
+        for F in (StartPage,About_Page,Settings_Page,Play_Page,Help_Page,Tournament_Page,Map_Page) :
 
             frame  = F(container,self)
 
@@ -69,9 +69,13 @@ class Play_Page(tk.Frame) :
     def __init__(self,parent,controller):
         tk.Frame.__init__(self,parent)
 
-        Play_Page.button0 = ttk.Button(self,text = Translation.translator("Tournament",CurrentLangue),
+        Play_Page.button0 = ttk.Button(self,text = Translation.translator("Location",CurrentLangue),
         command = lambda :controller.show_frame(Tournament_Page))
         Play_Page.button0.pack()
+
+        Play_Page.button2 = ttk.Button(self,text = Translation.translator("Tournament",CurrentLangue),
+        command = lambda :controller.show_frame(Map_Page))
+        Play_Page.button2.pack()
 
         Play_Page.button1 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
         command = lambda :controller.show_frame(StartPage))
@@ -97,6 +101,13 @@ class Tournament_Page(tk.Frame) :
         Tournament_Page.button1 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
         command = lambda :controller.show_frame(StartPage))
         Tournament_Page.button1.pack()
+
+class Play_Page(tk.Frame) :
+    # To Do
+    def __init__(self,parent,controller):
+        tk.Frame.__init__(self,parent)
+
+        
 
 class About_Page(tk.Frame) :
     def __init__(self,parent,controller):
@@ -145,7 +156,7 @@ class Settings_Page(tk.Frame) :
 #           and save Resolution.
         def saveSettings (fullscreen = var):
 
-            Refresh.refeshing(variable,StartPage,About_Page,Settings_Page)
+            Refresh.refeshing(variable,StartPage,About_Page,Settings_Page,Play_Page)
             MainGui.master.attributes("-fullscreen", fullscreen.get())
             Settings.saveResolution(CurrentResolution,variable1,MainGui.master)
 

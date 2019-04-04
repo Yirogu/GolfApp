@@ -1,2 +1,2 @@
-CurrentLangue:Pl
+CurrentLangue:Eng
 Resolution:1600x900

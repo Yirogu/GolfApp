@@ -10,7 +10,7 @@ class Refresh :
             for element in elements :
                 element[0].config(text = Translation.translator(element[1],CurrentLangue)),CurrentLangue
 
-    def refeshing(variable,StartPage,About_Page,Settings_Page) :
+    def refeshing(variable,StartPage,About_Page,Settings_Page,Play_Page) :
         # values ​​for refresh()
         Refresh.refresh(variable.get(),
                     # StartPage
@@ -25,4 +25,8 @@ class Refresh :
         [Settings_Page.label1,"Langue"],
         [Settings_Page.label2,"Resolution"],
         [Settings_Page.button1,"Save"],
-        [Settings_Page.button2,"Back to Home"])
+        [Settings_Page.button2,"Back to Home"],
+
+                    # Play_Page
+        [Play_Page.button0,"Tournament"],
+        [Play_Page.button1,"Back to Home"])

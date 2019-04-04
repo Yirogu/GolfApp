@@ -9,6 +9,7 @@ class Translation():
             'Save' : {'Eng':'Save','Pl' : 'Zapisz'},
             'Settings' : {'Eng' : 'Settings','Pl' : 'Ustawienia'},
             'Start' : {'Eng' : 'Start','Pl' : 'Rozpocznij'},
+            'Tournament' : {'Eng' : 'Tournament','Pl' : 'Turniej'},
             'Resolution' :{'Eng':"Resolution","Pl":"Rozdzielczosc"}
             }
 
