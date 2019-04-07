@@ -1,3 +1,7 @@
+#Own Ignore
+
+/home/stach/Desktop/Python3/GolfApp/src/lib/Config.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
