@@ -4,6 +4,7 @@ from tkinter import messagebox
 from .Translation import Translation
 from .Settings import Settings
 from .Refresh import Refresh
+from .Database import Database
 
 # how i can do 1 import for 2 files ?
 LARGE_FONT = ("Verdana", 12)
@@ -25,8 +26,10 @@ class MainGui(tk.Tk):
         container.grid_rowconfigure(0,weight =1)
         container.grid_columnconfigure(0,weight = 1)
         self.frames = {}
+        MainGui.frames =StartPage,About_Page,Settings_Page,Play_Page,Help_Page,Tournament_Page,Player_Page
         # Place t o add next Frames
-        for F in (StartPage,About_Page,Settings_Page,Play_Page,Help_Page,Tournament_Page,Map_Page) :
+        #  Try add all pages to 1 variable and use over class
+        for F in (MainGui.frames) :
 
             frame  = F(container,self)
 
@@ -69,13 +72,10 @@ class Play_Page(tk.Frame) :
     def __init__(self,parent,controller):
         tk.Frame.__init__(self,parent)
 
-        Play_Page.button0 = ttk.Button(self,text = Translation.translator("Location",CurrentLangue),
+        Play_Page.button0 = ttk.Button(self,text = Translation.translator("Tournament",CurrentLangue),
         command = lambda :controller.show_frame(Tournament_Page))
         Play_Page.button0.pack()
 
-        Play_Page.button2 = ttk.Button(self,text = Translation.translator("Tournament",CurrentLangue),
-        command = lambda :controller.show_frame(Map_Page))
-        Play_Page.button2.pack()
 
         Play_Page.button1 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
         command = lambda :controller.show_frame(StartPage))
@@ -91,7 +91,7 @@ class Tournament_Page(tk.Frame) :
         Tournament_Page.button0.pack()
 
         Tournament_Page.button1 = ttk.Button(self,text = Translation.translator("Add Players",CurrentLangue),
-        command = lambda :controller.show_frame(Tournament_Page))
+        command = lambda :controller.show_frame(Player_Page))
         Tournament_Page.button1.pack()
 
         Tournament_Page.button1 = ttk.Button(self,text = Translation.translator("Format,Rules,itc",CurrentLangue),
@@ -102,12 +102,23 @@ class Tournament_Page(tk.Frame) :
         command = lambda :controller.show_frame(StartPage))
         Tournament_Page.button1.pack()
 
-class Play_Page(tk.Frame) :
+
+class Player_Page(tk.Frame) :
     # To Do
     def __init__(self,parent,controller):
         tk.Frame.__init__(self,parent)
 
-        
+        Play_Page.button0 = ttk.Button(self,text = Translation.translator("Add Player",CurrentLangue),
+        command = lambda :controller.show_frame(Tournament_Page))
+        Play_Page.button0.pack()
+        Player_Page.T = tk.Text(self, height=2, width=30)
+        Player_Page.T.pack()
+        quote = Database.readAll()
+        Player_Page.T.insert(tk.END, quote)
+
+        Play_Page.button1 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
+        command = lambda :controller.show_frame(StartPage))
+        Play_Page.button1.pack()
 
 class About_Page(tk.Frame) :
     def __init__(self,parent,controller):
@@ -156,7 +167,7 @@ class Settings_Page(tk.Frame) :
 #           and save Resolution.
         def saveSettings (fullscreen = var):
 
-            Refresh.refeshing(variable,StartPage,About_Page,Settings_Page,Play_Page)
+            Refresh.refeshing(variable,StartPage,About_Page,Settings_Page,Play_Page,Help_Page,Tournament_Page,Player_Page)
             MainGui.master.attributes("-fullscreen", fullscreen.get())
             Settings.saveResolution(CurrentResolution,variable1,MainGui.master)
 
