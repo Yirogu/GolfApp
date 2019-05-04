@@ -94,13 +94,13 @@ class Tournament_Page(tk.Frame) :
         command = lambda :controller.show_frame(Player_Page))
         Tournament_Page.button1.pack()
 
-        Tournament_Page.button1 = ttk.Button(self,text = Translation.translator("Format,Rules,itc",CurrentLangue),
+        Tournament_Page.button2 = ttk.Button(self,text = Translation.translator("Format,Rules,itc",CurrentLangue),
         command = lambda :controller.show_frame(StartPage))
-        Tournament_Page.button1.pack()
+        Tournament_Page.button2.pack()
 
-        Tournament_Page.button1 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
+        Tournament_Page.button3 = ttk.Button(self,text = Translation.translator("Back to Home",CurrentLangue),
         command = lambda :controller.show_frame(StartPage))
-        Tournament_Page.button1.pack()
+        Tournament_Page.button3.pack()
 
 
 class Player_Page(tk.Frame) :
